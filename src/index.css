@@ -20,6 +20,7 @@ body {
   font-family: et-book;
   font-size: 1.5em;
   background-color: #f9f5d7;
+  margin: 100px 200px;
   scroll-behavior: smooth;
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
