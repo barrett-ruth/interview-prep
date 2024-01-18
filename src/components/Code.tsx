@@ -12,7 +12,7 @@ function Code({ code, language }: CodeProps) {
 
   return (
     <pre className='code'>
-      <code className={`language-${language ?? 'python'}`}>{code}</code>
+      <code className={`language-${language ?? 'python'}`}>{code.trim()}</code>
     </pre>
   )
 }

@@ -5,7 +5,17 @@ type EquationProps = {
 }
 
 function Equation({ math }: EquationProps) {
-  return <Latex>{`$${math}$`}</Latex>
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
+      <Latex>{`$${math}$`}</Latex>
+    </div>
+  )
 }
 
 export default Equation
