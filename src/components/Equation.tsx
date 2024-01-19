@@ -11,7 +11,8 @@ function Equation({ math, center }: EquationProps) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        margin: '15px 0'
+        margin: '15px 0',
+        fontSize: '1.21em'
       }
     : { display: 'inline-block' }
 
