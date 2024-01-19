@@ -12,10 +12,6 @@
   src: url('/et-book.ttf');
 }
 
-a {
-  color: inherit;
-}
-
 body {
   font-family: et-book;
   font-size: 1.5em;
