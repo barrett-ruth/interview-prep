@@ -1,8 +1,7 @@
-<FootnotesProvider>
-
 import Code from '~/components/Code'
 import Eq from '~/components/Equation'
 import { FootnotesProvider, Footnotes, FootnoteRef } from 'react-a11y-footnotes';
+import 'react-a11y-footnotes/dist/styles.css'
 
 import bruteforce from './snippets/bruteforce.py?raw'
 import calculate from './snippets/calculate.py?raw'
@@ -12,6 +11,8 @@ import move_right from './snippets/move_right.py?raw'
 import _return from './snippets/return.py?raw'
 import solution from './snippets/solution.py?raw'
 import _while from './snippets/while.py?raw'
+
+<FootnotesProvider>
 
 # Container With Most Water
 
@@ -34,7 +35,9 @@ Thus, the overall area is the following units of water:
 
 ## Intuition
 
-The problem is asking us to maximize this area. While this can trivially be performed by enumerating all pairs in <Eq math='O(length(height)^2)' /> time, the key insight in finding an efficient solution lies in exploiting the problem constraints.
+The problem is asking us to maximize this area.
+
+Trivially, this can be calculated by exhausting all positional pairs in <Eq math='O(length(height)^2)' /> time via a <FootnoteRef id={1} description={<Code code={bruteforce} />}>brute-force approach</FootnoteRef>. However, the key insight in finding an efficient solution lies in exploiting the problem constraints.
 
 While a lot of problems are easiest understood conceptually, this one is an optimization problem at its core:
 
@@ -48,19 +51,19 @@ Also consider another container of smaller width with positions <Eq math='l_1,r_
   - <Eq math='r_1-l_1<r_0-l_0' />
   - <Eq math='min(height[l_1],height[r_1])<min(height[l_0],height[r_0])' />
 
-  The second container's width and height are smaller— <Eq math='A_1<A_0' /> —and this container should not be considered.
+  The second container's width and height are smaller—<Eq math='A_1<A_0' />—and this container should not be considered.
 
 - An equal minimum height, and still <Eq math='A_1<A_0' /> because the second container's width is smaller.
 
-- A larger minimum height, and it could be that <Eq math='A_1>A_0' /> —this container should be considered.
+- A larger minimum height, and it could be that <Eq math='A_1>A_0' />—this container should be considered.
 
-Using this mathematical intuition, the number of considerable containers can be narrowed down significantly in comparison to the <Eq math='O(length(height)^2)' /> <FootnoteRef description={<Code code={bruteforce} />}>brute-force approach</FootnoteRef>. Starting with the widest container, new containers with minimum heights smaller than the current bounding height can be skipped.
+Using this mathematical intuition, the number of considerable containers can be narrowed down significantly. Starting with the widest container, new containers of lesser width with minimum heights smaller than the current bounding height can be skipped.
 
 ## Solving the Problem
 
 Using the two pointers technique and the aforementioned logic, the solution nearly writes itself.
 
-First, initialize the pointers <Eq math='l,r' /> to the widest positions and return value <FootnoteRef description={`If the list of heights is empty (no water is contained), 0 is a sensible default.`}><Eq math='area' /></FootnoteRef>:
+First, initialize the pointers <Eq math='l,r' /> to the widest positions and return value <FootnoteRef id={2} description={`If the list of heights is empty (no water is contained), 0 is a sensible default.`}><Eq math='area' /></FootnoteRef>:
 
 <Code code={initialize} />
 
