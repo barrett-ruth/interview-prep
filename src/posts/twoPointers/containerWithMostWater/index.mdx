@@ -2,7 +2,7 @@
 
 import Code from '~/components/Code'
 import Eq from '~/components/Equation'
-import { FootnotesProvider, Footnote, FootnoteRef, Footnotes, FootnoteReference } from 'react-a11y-footnotes';
+import { FootnotesProvider, Footnotes, FootnoteRef } from 'react-a11y-footnotes';
 
 import bruteforce from './snippets/bruteforce.py?raw'
 import calculate from './snippets/calculate.py?raw'
@@ -12,12 +12,6 @@ import move_right from './snippets/move_right.py?raw'
 import _return from './snippets/return.py?raw'
 import solution from './snippets/solution.py?raw'
 import _while from './snippets/while.py?raw'
-
-// TODO: add footnote component
-// - navigation
-// - why area initialized to 0
-// - cpp features (tabbed in state, update prism)
-// back button
 
 # Container With Most Water
 
@@ -66,7 +60,7 @@ Using this mathematical intuition, the number of considerable containers can be 
 
 Using the two pointers technique and the aforementioned logic, the solution nearly writes itself.
 
-First, initialize the pointers <Eq math='l,r' /> to the widest positions and return value <Eq math='area' />:
+First, initialize the pointers <Eq math='l,r' /> to the widest positions and return value <FootnoteRef description={`If the list of heights is empty (no water is contained), 0 is a sensible default.`}><Eq math='area' /></FootnoteRef>:
 
 <Code code={initialize} />
 
