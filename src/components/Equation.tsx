@@ -16,9 +16,9 @@ function Equation({ math, center }: EquationProps) {
     : { display: 'inline-block' }
 
   return (
-    <div style={style}>
+    <span style={style}>
       <Latex>{`$${math}$`}</Latex>
-    </div>
+    </span>
   )
 }
 

@@ -1,30 +1,25 @@
 import Code from '~/components/Code'
 import Eq from '~/components/Equation'
 
-const calculate = `\twidth, min_height = r - l, min(height[l], height[r])
-\tarea = max(area, width * min_height)`
-const move_left = `\twhile l < r and height[l] <= min_height:\n\t\tl += 1`
-const move_right = `\twhile l < r and height[r] <= min_height:\n\t\tr -= 1`
-const solution = `def maxArea(height: list[int]) -> int:
-\tarea = 0
-\tl, r = 0, len(height) - 1
-\twhile l < r:
-\t\twidth, min_height = r - l, min(height[l], height[r])
-\t\tarea = max(area, width * min_height)
-\t\twhile l < r and height[l] <= min_height:
-\t\t\tl += 1
-\t\twhile l < r and height[r] <= min_height:
-\t\t\tr -= 1
-\treturn area`
+import calculate from './snippets/calculate.py?raw'
+import initialize from './snippets/initialize.py?raw'
+import move_left from './snippets/move_left.py?raw'
+import move_right from './snippets/move_right.py?raw'
+import _return from './snippets/return.py?raw'
+import solution from './snippets/solution.py?raw'
+import _while from './snippets/while.py?raw'
 
-// TODO: add footnotes
+// TODO: add footnote component
+// package.json fix .prettierignore
+// - format everything (description section)
+// - navigation
+// - MDX
 // - why area initialized to 0
 // - brute force
-// - store snippets in actual .py files
 // - cpp features (tabbed in state, update prism)
 // back button
 
-function TwoPointers() {
+function ContainerWithMostWater() {
   return (
     <>
       <h1>Container With Most Water</h1>
@@ -114,9 +109,9 @@ function TwoPointers() {
         First, initialize the pointers <Eq math='l,r' /> to the widest positions
         and return value <Eq math='area' />:
       </p>
-      <Code code={`l, r = 0, len(height) - 1\narea = 0`} />
+      <Code code={initialize} />
       <p>Until the pointers meet,</p>
-      <Code code={`while l < r:`} />
+      <Code code={_while} />
       <p>calculate this iteration's container width, height, and area:</p>
       <Code code={calculate} />
       <p>
@@ -128,16 +123,18 @@ function TwoPointers() {
         <Eq math='min\_height' />
         ).
       </p>
-      <p>
-        Move the left pointer forward until that's the case:
+      <div>
+        <p>Move the left pointer forward until that's the case:</p>
         <Code code={move_left} />
-        And do the same for the right:
+        <p>And do the same for the right:</p>
         <Code code={move_right} />
-        The <Eq math='l < r' /> condition is also included since there may never
-        be a larger height—in that case, no more iterations are needed.
-      </p>
+        <p>
+          The <Eq math='l < r' /> condition is also included since there may
+          never be a larger height—in that case, no more iterations are needed.
+        </p>
+      </div>
       <p>Finally, return the area:</p>
-      <Code code={`\treturn area`} />
+      <Code code={_return} />
       <p>Here's the solution in all:</p>
       <Code code={solution} />
       <h2>Time & Space Complexity</h2>
@@ -158,4 +155,4 @@ function TwoPointers() {
   )
 }
 
-export default TwoPointers
+export default ContainerWithMostWater
