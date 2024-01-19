@@ -9,4 +9,3 @@ def maxArea(height: list[int]) -> int:
         while l < r and height[r] <= min_height:
             r -= 1
     return area
-
