@@ -23,7 +23,10 @@ function ContainerWithMostWater() {
   return (
     <>
       <h1>Container With Most Water</h1>
-      <a href='https://leetcode.com/problems/container-with-most-water/description/'>
+      <a
+        href='https://leetcode.com/problems/container-with-most-water/description/'
+        target='_blank'
+      >
         <h2>Problem Statement</h2>
       </a>
       Given an array of non-negative integers <Eq math='height' />, where{' '}
