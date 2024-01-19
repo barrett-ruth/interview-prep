@@ -1,7 +1,7 @@
 import 'katex/dist/katex.min.css'
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
-import ContainerWithMostWater from '~/posts/twoPointers/containerWithMostWater'
+import ContainerWithMostWater from '~/posts/twoPointers/containerWithMostWater/index.mdx'
 
 const Home = () => (
   <>
