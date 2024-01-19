@@ -1,5 +1,5 @@
-import Code from './Code'
-import Equation from './Equation'
+import Code from '~/components/Code'
+import Eq from '~/components/Equation'
 
 const calculate = `\twidth, min_height = r - l, min(height[l], height[r])
 \tarea = max(area, width * min_height)`
@@ -22,7 +22,7 @@ const solution = `def maxArea(height: list[int]) -> int:
 // - brute force
 // - store snippets in actual .py files
 // - cpp features (tabbed in state, update prism)
-// - remove "two pointers" quotes
+// back button
 
 function TwoPointers() {
   return (
@@ -31,85 +31,79 @@ function TwoPointers() {
       <a href='https://leetcode.com/problems/container-with-most-water/description/'>
         <h2>Problem Statement</h2>
       </a>
-      Given an array of non-negative integers <Equation math='height' />, where{' '}
-      <Equation math='height[i]' /> represents the height of the{' '}
-      <Equation math='i^{\text{th}}' /> column, return the maximum amount of
-      water any container can store. A container is bounded by its two columns
-      and the floor.
+      Given an array of non-negative integers <Eq math='height' />, where{' '}
+      <Eq math='height[i]' /> represents the height of the{' '}
+      <Eq math='i^{\text{th}}' /> column, return the maximum amount of water any
+      container can store. A container is bounded by its two columns and the
+      floor.
       <h2>Understanding the Problem</h2>
-      Given some pointers <Equation math='0\leq l<r<length(height)' />, the
+      Given some pointers <Eq math='0\leq l<r<length(height)' />, the
       corresponding container forms a rectangular area defined by some width and
       length:
       <ul>
         <li>
-          The width is the difference of those pointers,{' '}
-          <Equation math='r - l' />.
+          The width is the difference of those pointers, <Eq math='r - l' />.
         </li>
         <li>
-          The length is the smallest height of columns <Equation math='l' /> and{' '}
-          <Equation math='r' />, <Equation math='\min(height[l], height[r])' />.
+          The length is the smallest height of columns <Eq math='l' /> and{' '}
+          <Eq math='r' />, <Eq math='\min(height[l], height[r])' />.
         </li>
         Any water that could be stored above this height would "stream off" the
         sides of the container and not contribute to the total area.
       </ul>
       Thus, the overall area is the following units of water:
-      <Equation
+      <Eq
         center
         math='area = width \times height = (r - l) \times \min(height[l], height[r])'
       />
       <h2>Intuition</h2>
       The problem is asking us to maximize this area. While this can trivially
-      be performed by enumerating all pairs in{' '}
-      <Equation math='O(length(height)^2)' /> time, the key insight in finding
-      an efficient solution lies in exploiting the problem constraints.
+      be performed by enumerating all pairs in <Eq math='O(length(height)^2)' />{' '}
+      time, the key insight in finding an efficient solution lies in exploiting
+      the problem constraints.
       <p>
         While a lot of problems are easiest understood conceptually, this one is
         an optimization problem at its core:
       </p>
-      <Equation
-        center
-        math='\max\{(r - l) \times \min(height[l], height[r])\}'
-      />
+      <Eq center math='\max\{(r - l) \times \min(height[l], height[r])\}' />
       <p>
         Consider the widest container with pointers{' '}
-        <Equation math='l_0=0, r_0=len(height)-1' /> and area{' '}
-        <Equation math='A_0' />.
+        <Eq math='l_0=0, r_0=len(height)-1' /> and area <Eq math='A_0' />.
       </p>
       <p>
         Also consider another container of smaller width with positions{' '}
-        <Equation math='l_1,r_1' /> and area <Equation math='A_1' />.
+        <Eq math='l_1,r_1' /> and area <Eq math='A_1' />.
       </p>
       <ul>
         <li>
           If this second container has a smaller minimum height, then both
           <ul>
             <li>
-              <Equation math='r_1-l_1<r_0-l_0' />
+              <Eq math='r_1-l_1<r_0-l_0' />
             </li>
             <li>
-              <Equation math='min(height[l_1],height[r_1])<min(height[l_0],height[r_0])' />
+              <Eq math='min(height[l_1],height[r_1])<min(height[l_0],height[r_0])' />
             </li>
           </ul>
           The second container's width and height are smaller—
-          <Equation math='A_1<A_0' />
+          <Eq math='A_1<A_0' />
           —and this container should not be considered.
         </li>
         <li>
-          An equal minimum height, and still <Equation math='A_1<A_0' /> because
-          the second container's width is smaller.
+          An equal minimum height, and still <Eq math='A_1<A_0' /> because the
+          second container's width is smaller.
         </li>
         <li>
-          A larger minimum height, and it could be that{' '}
-          <Equation math='A_1>A_0' />
+          A larger minimum height, and it could be that <Eq math='A_1>A_0' />
           —this container should be considered.
         </li>
       </ul>
       <p>
         Using this mathematical intuition, the number of considerable containers
         can be narrowed down significantly in comparison to the brute-force{' '}
-        <Equation math='O(length(height)^2)' /> approach. Starting with the
-        widest container, new containers with minimum heights smaller than the
-        current bounding height can be skipped.
+        <Eq math='O(length(height)^2)' /> approach. Starting with the widest
+        container, new containers with minimum heights smaller than the current
+        bounding height can be skipped.
       </p>
       <h2>Solving the Problem</h2>
       <p>
@@ -117,8 +111,8 @@ function TwoPointers() {
         solution nearly writes itself.
       </p>
       <p>
-        First, initialize the pointers <Equation math='l,r' /> to the widest
-        positions and return value <Equation math='area' />:
+        First, initialize the pointers <Eq math='l,r' /> to the widest positions
+        and return value <Eq math='area' />:
       </p>
       <Code code={`l, r = 0, len(height) - 1\narea = 0`} />
       <p>Until the pointers meet,</p>
@@ -131,7 +125,7 @@ function TwoPointers() {
         pointer is smaller than the current minimum, the resulting area will
         also be smaller. Thus, both pointers should advance until their height
         is taller than the previous bounding one (in this case,{' '}
-        <Equation math='min\_height' />
+        <Eq math='min\_height' />
         ).
       </p>
       <p>
@@ -139,8 +133,8 @@ function TwoPointers() {
         <Code code={move_left} />
         And do the same for the right:
         <Code code={move_right} />
-        The <Equation math='l < r' /> condition is also included since there may
-        never be a larger height—in that case, no more iterations are needed.
+        The <Eq math='l < r' /> condition is also included since there may never
+        be a larger height—in that case, no more iterations are needed.
       </p>
       <p>Finally, return the area:</p>
       <Code code={`\treturn area`} />
@@ -150,17 +144,16 @@ function TwoPointers() {
       <p>
         This solution follows the typical monotonic two pointers approach. The
         left/right pointers are incremented/decremented by 1 until they meet,
-        which takes exactly <Equation math='length(height)' /> iterations.
+        which takes exactly <Eq math='length(height)' /> iterations.
       </p>
       <p>
         Thus, the overall time complexity is{' '}
-        <Equation math='\Theta(length(height))' />.
+        <Eq math='\Theta(length(height))' />.
       </p>
       <p>
-        Only variables and constant-time calculations are used&mdash; the space
-        complexity is <Equation math='\Theta(1)' />.
+        Only variables and constant-time calculations are used&mdash;the space
+        complexity is <Eq math='\Theta(1)' />.
       </p>
-      <h2>Further Optimization</h2>
     </>
   )
 }
