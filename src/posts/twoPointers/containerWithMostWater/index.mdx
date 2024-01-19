@@ -1,6 +1,10 @@
+<FootnotesProvider>
+
 import Code from '~/components/Code'
 import Eq from '~/components/Equation'
+import { FootnotesProvider, Footnote, FootnoteRef, Footnotes, FootnoteReference } from 'react-a11y-footnotes';
 
+import bruteforce from './snippets/bruteforce.py?raw'
 import calculate from './snippets/calculate.py?raw'
 import initialize from './snippets/initialize.py?raw'
 import move_left from './snippets/move_left.py?raw'
@@ -10,12 +14,8 @@ import solution from './snippets/solution.py?raw'
 import _while from './snippets/while.py?raw'
 
 // TODO: add footnote component
-// package.json fix .prettierignore
-// - format everything (description section)
 // - navigation
-// - MDX
 // - why area initialized to 0
-// - brute force
 // - cpp features (tabbed in state, update prism)
 // back button
 
@@ -60,7 +60,7 @@ Also consider another container of smaller width with positions <Eq math='l_1,r_
 
 - A larger minimum height, and it could be that <Eq math='A_1>A_0' /> —this container should be considered.
 
-Using this mathematical intuition, the number of considerable containers can be narrowed down significantly in comparison to the brute-force <Eq math='O(length(height)^2)' /> approach. Starting with the widest container, new containers with minimum heights smaller than the current bounding height can be skipped.
+Using this mathematical intuition, the number of considerable containers can be narrowed down significantly in comparison to the <Eq math='O(length(height)^2)' /> <FootnoteRef description={<Code code={bruteforce} />}>brute-force approach</FootnoteRef>. Starting with the widest container, new containers with minimum heights smaller than the current bounding height can be skipped.
 
 ## Solving the Problem
 
@@ -106,3 +106,5 @@ Thus, the overall time complexity is <Eq math='\Theta(length(height))' />.
 
 Only variables and constant-time calculations are used&mdash;the space complexity is <Eq math='\Theta(1)' />.
 
+<Footnotes />
+</FootnotesProvider>

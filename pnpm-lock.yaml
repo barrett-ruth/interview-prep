@@ -14,6 +14,9 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
+  react-a11y-footnotes:
+    specifier: ^0.7.0
+    version: 0.7.0(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -2420,6 +2423,18 @@ packages:
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
+
+  /react-a11y-footnotes@0.7.0(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-SBZ/IErD2Lc0JTkmb78Wcsb/D22kRhFrySQFZPAqwa1deRveOsivG3D4Gna+kX9z5J+8vgmUEq7rCPPxK4oG/g==}
+    peerDependencies:
+      prop-types: ^15.6.0
+      react: '>=16.0.0'
+      react-dom: '>=16.0.0'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
