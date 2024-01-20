@@ -14,19 +14,24 @@ body {
   scroll-behavior: smooth;
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
+  line-height: 1.2em;
 }
 body,
 html {
   overflow-anchor: none;
-  padding: 0 5%;
+  padding: 0 4%;
 }
 
 h1 {
   font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 h2 {
   text-decoration: underline;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .katex {
@@ -35,4 +40,9 @@ h2 {
 
 [data-a11y-footnotes-list-item]:target {
   background-color: transparent;
+}
+
+.breadcrumb {
+  font-size: 1.2em;
+  font-style: italic;
 }
