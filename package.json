@@ -12,6 +12,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@fontsource/fira-mono": "^5.0.8",
     "@mdx-js/rollup": "^3.0.0",
     "katex": "^0.16.9",
     "react": "^18.2.0",

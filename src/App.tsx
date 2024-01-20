@@ -1,4 +1,7 @@
+import '@fontsource/fira-mono'
+import '@fontsource/fira-mono/700.css'
 import 'katex/dist/katex.min.css'
+
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 import TwoPointers from '~/twoPointers'
