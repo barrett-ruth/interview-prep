@@ -1,6 +1,7 @@
 import Code from '~/components/Code'
 import Eq from '~/components/Equation'
 import { FootnotesProvider, Footnotes, FootnoteRef } from 'react-a11y-footnotes';
+import { Link } from 'react-router-dom'
 import 'react-a11y-footnotes/dist/styles.css'
 
 import bruteforce from './snippets/bruteforce.py?raw'
@@ -13,6 +14,10 @@ import solution from './snippets/solution.py?raw'
 import _while from './snippets/while.py?raw'
 
 <FootnotesProvider>
+
+<div className="breadcrumb">
+  <Link to='/'>~</Link>/<Link to='/two-pointers'>two-pointers</Link>
+</div>
 
 # Container With Most Water
 
@@ -54,7 +59,6 @@ Also consider another container of smaller width with positions <Eq math='l_1,r_
   The second container's width and height are smaller—<Eq math='A_1<A_0' />—and this container should not be considered.
 
 - An equal minimum height, and still <Eq math='A_1<A_0' /> because the second container's width is smaller.
-
 - A larger minimum height, and it could be that <Eq math='A_1>A_0' />—this container should be considered.
 
 Using this mathematical intuition, the number of considerable containers can be narrowed down significantly. Starting with the widest container, new containers of lesser width with minimum heights smaller than the current bounding height can be skipped.
