@@ -8,14 +8,14 @@
 }
 
 body {
-  font-size: 1.7em;
+  font-size: 1.2em;
   font-family: 'EB Garamond', 'Times New Roman', serif;
   background-color: #f9f5d7;
   margin: 100px 200px;
   scroll-behavior: smooth;
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
-  line-height: 1.2em;
+  line-height: 1.3em;
 }
 body,
 html {
@@ -42,7 +42,7 @@ h2 {
 }
 
 .katex {
-  font-size: 1em;
+  font-size: 1.1em;
 }
 
 [data-a11y-footnotes-list-item]:target {
@@ -50,7 +50,7 @@ h2 {
 }
 
 .breadcrumb {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-style: italic;
   font-family: 'Courier New';
 }
