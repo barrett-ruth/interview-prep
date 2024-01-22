@@ -1,6 +1,6 @@
 import Code from '~/components/Code'
 import Eq from '~/components/Equation'
-import { FootnotesProvider, Footnotes, FootnoteRef } from 'react-a11y-footnotes';
+import { FootnotesProvider, Footnotes, FootnoteRef } from 'react-a11y-footnotes'
 import { Link } from 'react-router-dom'
 import 'react-a11y-footnotes/dist/styles.css'
 
@@ -36,7 +36,10 @@ Any water that could be stored above this height would "stream off" the sides of
 
 Thus, the overall area is the following units of water:
 
-<Eq center math='area = width \times height = (r - l) \times \min(height[l], height[r])' />
+<Eq
+  center
+  math='area = width \times height = (r - l) \times \min(height[l], height[r])'
+/>
 
 ## Intuition
 
@@ -53,6 +56,7 @@ Consider the widest container with pointers <Eq math='l_0=0, r_0=len(height)-1' 
 Also consider another container of smaller width with positions <Eq math='l_1,r_1' /> and area <Eq math='A_1' />.
 
 - If this second container has a smaller minimum height, then both
+
   - <Eq math='r_1-l_1<r_0-l_0' />
   - <Eq math='min(height[l_1],height[r_1])<min(height[l_0],height[r_0])' />
 
