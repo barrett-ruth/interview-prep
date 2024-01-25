@@ -13,7 +13,7 @@ function Home() {
   return (
     <>
       <Breadcrumb />
-      <h1>swe interview prep</h1>
+      <h1>interview prep</h1>
       <Link to='/two-pointers'>
         <h2>two pointers</h2>
       </Link>
