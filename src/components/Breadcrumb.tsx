@@ -4,13 +4,16 @@ type BreadcrumbProps = {
   link?: string
 }
 
-// TODO: add about on right side
-
 function Breadcrumb({ link }: BreadcrumbProps) {
   return (
     <div className='breadcrumb'>
-      <Link to='/'>~</Link>/
-      {link !== undefined && <Link to={link}>{link.slice(1)}</Link>}
+      <div className='left-align'>
+        <Link to='/'>~</Link>/
+        {link !== undefined && <Link to={link}>{link.slice(1)}</Link>}
+      </div>
+      <div className='right-align' style={{ fontStyle: 'normal' }}>
+        <Link to='/about'>about</Link>
+      </div>
     </div>
   )
 }

@@ -4,13 +4,16 @@ import 'katex/dist/katex.min.css'
 
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
+import About from '~/components/About'
+import Breadcrumb from '~/components/Breadcrumb'
 import TwoPointers from '~/twoPointers'
 import ContainerWithMostWater from '~/twoPointers/containerWithMostWater/index.mdx'
 
 function Home() {
   return (
     <>
-      <h1 style={{ marginTop: '100px' }}>swe interview prep</h1>
+      <Breadcrumb />
+      <h1>swe interview prep</h1>
       <Link to='/two-pointers'>
         <h2>two pointers</h2>
       </Link>
@@ -29,6 +32,7 @@ function App() {
             path='/two-pointers/container-with-most-water'
             element={<ContainerWithMostWater />}
           />
+          <Route path='/about' element={<About />} />
         </Routes>
       </Router>
     </>
