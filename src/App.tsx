@@ -10,7 +10,7 @@ import ContainerWithMostWater from '~/twoPointers/containerWithMostWater/index.m
 function Home() {
   return (
     <>
-      <h1>swe interview prep</h1>
+      <h1 style={{ marginTop: '100px' }}>swe interview prep</h1>
       <Link to='/two-pointers'>
         <h2>two pointers</h2>
       </Link>
@@ -20,16 +20,18 @@ function Home() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/two-pointers' element={<TwoPointers />} />
-        <Route
-          path='/two-pointers/container-with-most-water'
-          element={<ContainerWithMostWater />}
-        />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/two-pointers' element={<TwoPointers />} />
+          <Route
+            path='/two-pointers/container-with-most-water'
+            element={<ContainerWithMostWater />}
+          />
+        </Routes>
+      </Router>
+    </>
   )
 }
 

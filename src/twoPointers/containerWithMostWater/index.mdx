@@ -4,6 +4,8 @@ import { FootnotesProvider, Footnotes, FootnoteRef } from 'react-a11y-footnotes'
 import { Link } from 'react-router-dom'
 import 'react-a11y-footnotes/dist/styles.css'
 
+import Breadcrumb from '~/components/Breadcrumb'
+
 import bruteforce from './snippets/bruteforce.py?raw'
 import calculate from './snippets/calculate.py?raw'
 import initialize from './snippets/initialize.py?raw'
@@ -15,9 +17,7 @@ import _while from './snippets/while.py?raw'
 
 <FootnotesProvider>
 
-<div className='breadcrumb'>
-  <Link to='/'>~</Link> / <Link to='/two-pointers'>two-pointers</Link>
-</div>
+<Breadcrumb link='/two-pointers' />
 
 # Container With Most Water
 

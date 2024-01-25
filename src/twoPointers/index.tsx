@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
+import Breadcrumb from '~/components/Breadcrumb'
 
 function TwoPointers() {
   return (
     <>
-      <div className='breadcrumb'>
-        <Link to='/'>~</Link>
-      </div>
+      <Breadcrumb />
       <h1>Two Pointers</h1>
       {/* <Link to='/two-pointers/overview'> */}
       {/*   <h2>Technique Overview</h2> */}
