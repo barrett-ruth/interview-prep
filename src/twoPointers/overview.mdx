@@ -29,11 +29,8 @@ However, after improving my skills with this technique, I have come to realize t
 
 In reality, the two pointers technique:
 
-{/* TODO: add problem example footnotes */}
-
-- <Ref id={1} description={<Fragment><a href="https://leetcode.com/problems/3sum/description/" target="_blank">3Sum</a> has a time complexity of <Eq math='O(n^2)' /></Fragment>}>Does not have a specific asymptotic runtime complexity</Ref>
 - Does not necessarily search for indices
-- <Ref id={2} description={<Fragment><a href="https://leetcode.com/problems/linked-list-cycle-ii/editorial/" target="_blank">Linked list cycles</a> can be detected with two pointers</Fragment>}>Can be applied to a variety of data structures (arrays, linked lists, strings, binary trees)</Ref>
+- <Ref id={1} description={<Fragment><a href="https://leetcode.com/problems/linked-list-cycle-ii/editorial/" target="_blank">Linked list cycles</a> can be detected with two pointers</Fragment>}>Can be applied to a variety of data structures (arrays, linked lists, strings, binary trees)</Ref>
 - Uses values associated with the specific pointers (unlike a sliding window)
 - Moves each pointer in a single direction
 
@@ -42,7 +39,7 @@ Vague, right? However, the advantage of defining a technique so broadly is that 
 These few constraints open up numerous ways the technique can be adapted, including:
 
 - Pointer speed (fast or slow?)
-- <Ref id={3} description={<Fragment>Finding <a href="https://leetcode.com/problems/subarray-sum-equals-k/editorial/" target="_blank">subarray sums equal to k</a> uses two monotonically increasing pointers.</Fragment>}>Pointer direction (forward or backward? both or one?)</Ref>
+- <Ref id={2} description={<Fragment>Finding <a href="https://leetcode.com/problems/subarray-sum-equals-k/editorial/" target="_blank">subarray sums equal to k</a> uses two monotonically increasing pointers.</Fragment>}>Pointer direction (forward or backward? both or one?)</Ref>
 - Pointer collision (stop before or after the pointers overlap?)
 
 It is also crucial to consider whether the two pointers approach can even be applied. When I think I can use two pointers, I ask myself the following questions about the problem I am solving:
