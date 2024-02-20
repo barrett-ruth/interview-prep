@@ -1,0 +1,80 @@
+import Code from '~/components/Code'
+import Eq from '~/components/Equation'
+import { FootnotesProvider, Footnotes, FootnoteRef } from 'react-a11y-footnotes'
+import { Link } from 'react-router-dom'
+import 'react-a11y-footnotes/dist/styles.css'
+
+import Breadcrumb from '~/components/Breadcrumb'
+
+import sort from './snippets/sort.py?raw'
+import solution from './snippets/solution.py?raw'
+import ptrs from './snippets/ptrs.py?raw'
+import loop from './snippets/loop.py?raw'
+import collide from './snippets/collide.py?raw'
+import pair from './snippets/pair.py?raw'
+import nopair from './snippets/nopair.py?raw'
+
+<FootnotesProvider>
+
+<Breadcrumb link='/two-pointers' />
+
+# Boats to Save People
+
+## [Problem Statement](https://leetcode.com/problems/boats-to-save-people/)
+
+Try to solve the problem by yourself first.
+
+Given an array of (presumably) positive weights <Eq math='people' /> and a positive weight limit <Eq math='limit' />, find the minimal number of boats that can carry them according to the following conditions:
+
+1. A boat can carry at most two people.
+2. A boat sinks if it carries more than <Eq math='limit' /> units of weight.
+
+Of course, <Eq math='\forall person \in people, person \leq limit' />.
+
+## Intuition
+
+First, think about the problem and how to exploit the constraints. Only two people can fit in a boat, so heavier people will sink boats with other heavy people—we can only pair them with a lighter person. The same is true for slightly lighter individuals, and slightly lighter than them, too—the heavier a person is, the lighter a person we need to pair them with.
+
+Our pointers, <Eq math='light' /> and <Eq math='heavy' />, will represent who we're trying to pair up (<Eq math='boats' /> will be the answer):
+
+<Code code={ptrs} />
+
+However, does it make sense to traverse a random array of weights monotonically? This would require repeatedly searching <Eq math='people' /> for the heaviest and lightest person, pairing them up, and increasing a total count. Instead, we can perform the most common two pointers preprocessing step: **sorting**.
+
+<Code code={sort} />
+
+Let's address the rest of those preliminary questions to flesh out this approach:
+
+- Processing a light or heavy person is equivalent to putting them in a boat (bye bye!)—it is safe to move our pointers and forget about them.
+- The pointers should not skip anyone, so they'll move one at a time.
+- After pairing up a heavy or light person, the next-heaviest and next-lightest people need a boat—light and heavy will move monotonically forward and backward, respectively. This is all possible because <Eq math='people' /> has been sorted.
+- If the pointers collide, that means only one person remains. This person needs a boat too.
+
+## Solving the Problem
+
+So, iterate until (and including) when the pointers overlap:
+
+<Code code={loop} />
+
+If the pointers collide, give the last person a boat. Everyone has been processed, so break.
+
+<Code code={collide} />
+
+If the people don't exceed the limit, give them a boat (increase the boat count) and forget about them (iterate the pointers):
+
+<Code code={pair} />
+
+If the pair _does_ exceed the limit, the heavy person is too heavy. All we can do is give them their own boat and forget about them as well:
+
+<Code code={nopair} />
+
+Here's the solution in all:
+
+<Code code={solution} />
+
+## Time and Space Complexity
+
+Finally, the time complexity is <Eq math='\Theta(length(people))' />, as each person is processed and put on a boat once. The space complexity is <Eq math='\Theta(1)' />.
+
+<Footnotes />
+</FootnotesProvider>

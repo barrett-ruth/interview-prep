@@ -1,17 +1,13 @@
 import Breadcrumb from '~/components/Breadcrumb'
 import Code from '~/components/Code'
 import Eq from '~/components/Equation'
-import { FootnotesProvider, Footnotes, FootnoteRef as Ref } from 'react-a11y-footnotes'
+import {
+  FootnotesProvider,
+  Footnotes,
+  FootnoteRef as Ref
+} from 'react-a11y-footnotes'
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-
-import boatsort from './snippets/boatsort.py?raw'
-import boatsolution from './snippets/boatsolution.py?raw'
-import boatptrs from './snippets/boatptrs.py?raw'
-import boatloop from './snippets/boatloop.py?raw'
-import boatcollide from './snippets/boatcollide.py?raw'
-import boatpair from './snippets/boatpair.py?raw'
-import boatnopair from './snippets/boatnopair.py?raw'
 
 <FootnotesProvider>
 
@@ -30,7 +26,23 @@ However, after improving my skills with this technique, I have come to realize t
 In reality, the two pointers technique:
 
 - Does not necessarily search for indices
-- <Ref id={1} description={<Fragment><a href="https://leetcode.com/problems/linked-list-cycle-ii/editorial/" target="_blank">Linked list cycles</a> can be detected with two pointers</Fragment>}>Can be applied to a variety of data structures (arrays, linked lists, strings, binary trees)</Ref>
+- <Ref
+    id={1}
+    description={
+      <Fragment>
+        <a
+          href='https://leetcode.com/problems/linked-list-cycle-ii/editorial/'
+          target='_blank'
+        >
+          Linked list cycles
+        </a>{' '}
+        can be detected with two pointers
+      </Fragment>
+    }
+  >
+    Can be applied to a variety of data structures (arrays, linked lists,
+    strings, binary trees)
+  </Ref>
 - Uses values associated with the specific pointers (unlike a sliding window)
 - Moves each pointer in a single direction
 
@@ -39,7 +51,23 @@ Vague, right? However, the advantage of defining a technique so broadly is that 
 These few constraints open up numerous ways the technique can be adapted, including:
 
 - Pointer speed (fast or slow?)
-- <Ref id={2} description={<Fragment>Finding <a href="https://leetcode.com/problems/subarray-sum-equals-k/editorial/" target="_blank">subarray sums equal to k</a> uses two monotonically increasing pointers.</Fragment>}>Pointer direction (forward or backward? both or one?)</Ref>
+- <Ref
+    id={2}
+    description={
+      <Fragment>
+        Finding{' '}
+        <a
+          href='https://leetcode.com/problems/subarray-sum-equals-k/editorial/'
+          target='_blank'
+        >
+          subarray sums equal to k
+        </a>{' '}
+        uses two monotonically increasing pointers.
+      </Fragment>
+    }
+  >
+    Pointer direction (forward or backward? both or one?)
+  </Ref>
 - Pointer collision (stop before or after the pointers overlap?)
 
 It is also crucial to consider whether the two pointers approach can even be applied. When I think I can use two pointers, I ask myself the following questions about the problem I am solving:
@@ -52,57 +80,11 @@ It is also crucial to consider whether the two pointers approach can even be app
 
 Like most concepts, identifying and creating a two pointers solution becomes much easier after solving a few problems. Let's dive into an example.
 
-## Example: [Boats to Save People](https://leetcode.com/problems/boats-to-save-people/description/)
+## Example: <Link to='/two-pointers/boats-to-save-people'>Boats to Save People</Link>
 
-Given an array of (presumably) positive weights <Eq math='people' /> and a positive weight limit <Eq math='limit' />, find the minimal number of boats that can carry them according to the following conditions:
+Ensure you understand both the intuition behind the solution and the answers to the aforementioned questions. Solving more problems will help you accustomize you to recognizing and solving two pointers problems. This includes picking up on queues in problem statements, common pre-processing techniques, and other optimization techniques.
 
-1. A boat can carry at most two people.
-2. A boat sinks if it carries more than <Eq math='limit' /> units of weight.
-
-Of course, <Eq math='\forall person \in people, person \leq limit' />.
-
-First, think about the problem and how to exploit the constraints. Only two people can fit in a boat, so heavier people will sink boats with other heavy people—we can only pair them with a lighter person. The same is true for slightly lighter individuals, and slightly lighter than them, too—the heavier a person is, the lighter a person we need to pair them with.
-
-Our pointers, <Eq math='light' /> and <Eq math='heavy' />, will represent who we're trying to pair up (<Eq math='boats' /> will be the answer):
-
-<Code code={boatptrs} />
-
-However, does it make sense to traverse a random array of weights monotonically? This would require repeatedly searching <Eq math='people' /> for the heaviest and lightest person, pairing them up, and increasing a total count. Instead, we can perform the most common two pointers preprocessing step: **sorting**.
-
-<Code code={boatsort} />
-
-Let's address the rest of those preliminary questions to flesh out this approach:
-
-- Processing a light or heavy person is equivalent to putting them in a boat (bye bye!)—it is safe to move our pointers and forget about them.
-- The pointers should not skip anyone, so they'll move one at a time.
-- After pairing up a heavy or light person, the next-heaviest and next-lightest people need a boat—light and heavy will move monotonically forward and backward, respectively. This is all possible because <Eq math='people' /> has been sorted.
-- If the pointers collide, that means only one person remains. This person needs a boat too.
-
-So, iterate until (and including) when the pointers overlap:
-
-<Code code={boatloop} />
-
-If the pointers collide, give the last person a boat. Everyone has been processed, so break.
-
-<Code code={boatcollide} />
-
-If the people don't exceed the limit, give them a boat (increase the boat count) and forget about them (iterate the pointers):
-
-<Code code={boatpair} />
-
-If the pair *does* exceed the limit, the heavy person is too heavy. All we can do is give them their own boat and forget about them as well:
-
-<Code code={boatnopair} />
-
-Here's the solution in all:
-
-<Code code={boatsolution} />
-
-Finally, the time complexity is <Eq math='\Theta(length(people))' />, as each person is processed and put on a boat once. The space complexity is <Eq math='\Theta(1)' />.
-
-## Ramping Up
-
-If that makes sense, code up the solution yourself and then take a look at a similarly structured problem: <Link to='/two-pointers/container-with-most-water'>Container With Most Water</Link>.
+## Example: <Link to='/two-pointers/container-with-most-water'>Container With Most Water</Link>.
 
 <Footnotes />
 </FootnotesProvider>

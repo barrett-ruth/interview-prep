@@ -12,6 +12,9 @@ function TwoPointers() {
       <Link to='/two-pointers/container-with-most-water'>
         <h2>Container With Most Water</h2>
       </Link>
+      <Link to='/two-pointers/boats-to-save-people'>
+        <h2>Boats to Save People</h2>
+      </Link>
     </>
   )
 }

@@ -6,7 +6,9 @@ import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 import About from '~/components/About'
 import Breadcrumb from '~/components/Breadcrumb'
+
 import TwoPointers from '~/twoPointers'
+import BoatsToSavePeople from '~/twoPointers/boatsToSavePeople/index.mdx'
 import ContainerWithMostWater from '~/twoPointers/containerWithMostWater/index.mdx'
 import TwoPointersOverview from '~/twoPointers/overview.mdx'
 
@@ -28,6 +30,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
           <Route path='/two-pointers' element={<TwoPointers />} />
           <Route
             path='/two-pointers/overview'
@@ -37,7 +40,10 @@ function App() {
             path='/two-pointers/container-with-most-water'
             element={<ContainerWithMostWater />}
           />
-          <Route path='/about' element={<About />} />
+          <Route
+            path='/two-pointers/boats-to-save-people'
+            element={<BoatsToSavePeople />}
+          />
         </Routes>
       </Router>
     </>
